@@ -2,9 +2,7 @@ package com.blackadm.springworkshop.dtos;
 
 import com.blackadm.springworkshop.domain.User;
 
-import java.io.Serializable;
-
-public class UserDto implements Serializable {
+public class UserDto {
     private String id;
     private String name;
     private String email;
