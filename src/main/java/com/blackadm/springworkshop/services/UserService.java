@@ -1,6 +1,7 @@
 package com.blackadm.springworkshop.services;
 
 import com.blackadm.springworkshop.domain.User;
+import com.blackadm.springworkshop.dtos.UserDto;
 import com.blackadm.springworkshop.repository.UserRepository;
 import com.blackadm.springworkshop.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,13 @@ public class UserService {
             throw new NotFoundException("Usuário não encontrado!");
         }
         return user;
+    }
+
+    public User insert(User obj) {
+        return userRepository.insert(obj);
+    }
+
+    public User fromDto(UserDto objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
