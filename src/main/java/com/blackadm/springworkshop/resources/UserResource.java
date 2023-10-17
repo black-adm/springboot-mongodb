@@ -1,5 +1,6 @@
 package com.blackadm.springworkshop.resources;
 
+import com.blackadm.springworkshop.domain.Post;
 import com.blackadm.springworkshop.domain.User;
 import com.blackadm.springworkshop.dtos.UserDto;
 import com.blackadm.springworkshop.services.UserService;
@@ -53,5 +54,11 @@ public class UserResource {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         userService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = userService.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
