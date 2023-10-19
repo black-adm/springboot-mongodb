@@ -1,6 +1,7 @@
 package com.blackadm.springworkshop.services;
 
 import com.blackadm.springworkshop.domain.Post;
+import com.blackadm.springworkshop.domain.User;
 import com.blackadm.springworkshop.repository.PostRepository;
 import com.blackadm.springworkshop.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ public class PostService {
 
     @Autowired
     private PostRepository postRepository;
+
+    public List<Post> findAll() {
+        return postRepository.findAll();
+    }
 
     public Post findById(String id) {
         Post user = postRepository.findPostById(id);
