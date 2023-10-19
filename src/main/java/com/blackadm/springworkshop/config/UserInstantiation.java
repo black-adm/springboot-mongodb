@@ -2,6 +2,7 @@ package com.blackadm.springworkshop.config;
 
 import com.blackadm.springworkshop.domain.Post;
 import com.blackadm.springworkshop.dtos.AuthorDto;
+import com.blackadm.springworkshop.dtos.CommentDto;
 import com.blackadm.springworkshop.repository.PostRepository;
 import com.blackadm.springworkshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,14 @@ public class UserInstantiation implements CommandLineRunner {
                 null, simpleDate.parse("16/10/2023"), "Silêncio da Uber na postura dos motoristas", "Ignorância e atitudes ridiculas dos Ubers quando chegam no local de embarque!", new AuthorDto(vitoria)
         );
 
+        CommentDto commentOne = new CommentDto("Que lindo vi <3", simpleDate.parse("14/10/2023"), new AuthorDto(marcos));
+        CommentDto commentTwo = new CommentDto("Todo cuidado é pouco nego, vamos vigiar!", simpleDate.parse("28/09/2023"), new AuthorDto(fabiana));
+        CommentDto commentTree = new CommentDto("Como voltar nessa viagem ? Foi demaaaais", simpleDate.parse("01/10/2023"), new AuthorDto(vitoria));
+
+        postOne.getComments().addAll(Arrays.asList(commentOne, commentTree));
+        postTwo.getComments().addAll(Arrays.asList(commentTwo));
         postRepository.saveAll(Arrays.asList(postOne, postTwo, postTree, postFour, postFive));
+
         vitoria.getPosts().addAll(Arrays.asList(postOne, postFive));
         userRepository.save(vitoria);
 
