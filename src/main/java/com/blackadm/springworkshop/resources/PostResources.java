@@ -2,13 +2,16 @@ package com.blackadm.springworkshop.resources;
 
 import com.blackadm.springworkshop.domain.Post;
 import com.blackadm.springworkshop.domain.User;
+import com.blackadm.springworkshop.dtos.PostDto;
 import com.blackadm.springworkshop.dtos.UserDto;
 import com.blackadm.springworkshop.resources.util.Url;
 import com.blackadm.springworkshop.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,5 +53,14 @@ public class PostResources {
         Date max = Url.convertDate(maxDate, new Date());
         List<Post> list = postService.fullSearch(text, min, max);
         return ResponseEntity.ok().body(list);
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> create(@RequestBody PostDto objDto) {
+        Post obj = postService.fromDto(objDto);
+        obj = postService.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+
+        return ResponseEntity.created(uri).build();
     }
 }
