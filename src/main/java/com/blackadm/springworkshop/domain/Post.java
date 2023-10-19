@@ -25,10 +25,9 @@ public class Post {
     public Post() {
     }
 
-    public Post(String id, Date date, String title, String body, AuthorDto author) {
+    public Post(String id, String title, String body, AuthorDto author) {
         super();
         this.id = id;
-        this.date = date;
         this.title = title;
         this.body = body;
         this.author = author;

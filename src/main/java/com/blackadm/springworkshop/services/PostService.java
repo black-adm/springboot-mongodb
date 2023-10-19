@@ -41,11 +41,23 @@ public class PostService {
     }
 
     public Post create(Post obj) {
+        obj.setDate(new Date());
         return postRepository.insert(obj);
     }
 
     public Post fromDto(PostDto objDto) {
-        return new Post(objDto.getId(), objDto.getDate(), objDto.getTitle(), objDto.getBody(), objDto.getAuthor());
+        return new Post(objDto.getId(), objDto.getTitle(), objDto.getBody(), objDto.getAuthor());
+    }
+
+    public Post update(Post obj) {
+        Post newObj = postRepository.findPostById(obj.getId());
+        updateData(newObj, obj);
+        return postRepository.save(newObj);
+    }
+
+    private void updateData(Post newObj, Post obj) {
+        newObj.setTitle(obj.getTitle());
+        newObj.setBody(obj.getBody());
     }
 
     public void delete(String id) {

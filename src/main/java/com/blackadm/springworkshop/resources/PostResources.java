@@ -14,7 +14,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/posts")
@@ -62,6 +61,14 @@ public class PostResources {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@RequestBody PostDto objDto, @PathVariable String id) {
+        Post obj = postService.fromDto(objDto);
+        obj.setId(id);
+        obj = postService.update(obj);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/{id}")
