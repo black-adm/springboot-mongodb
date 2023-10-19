@@ -57,7 +57,7 @@ public class UserInstantiation implements CommandLineRunner {
 
         CommentDto commentOne = new CommentDto("Que lindo vi <3", simpleDate.parse("14/10/2023"), new AuthorDto(marcos));
         CommentDto commentTwo = new CommentDto("Todo cuidado é pouco nego, vamos vigiar!", simpleDate.parse("28/09/2023"), new AuthorDto(fabiana));
-        CommentDto commentTree = new CommentDto("Como voltar nessa viagem ? Foi demaaaais", simpleDate.parse("01/10/2023"), new AuthorDto(vitoria));
+        CommentDto commentTree = new CommentDto("Como voltar nessa viagem ? Foi demaaaais", simpleDate.parse("01/10/2023"), new AuthorDto(alice));
 
         postOne.getComments().addAll(Arrays.asList(commentOne, commentTree));
         postTwo.getComments().addAll(Arrays.asList(commentTwo));
