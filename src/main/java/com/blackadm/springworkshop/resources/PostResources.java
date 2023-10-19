@@ -63,4 +63,10 @@ public class PostResources {
 
         return ResponseEntity.created(uri).build();
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        postService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

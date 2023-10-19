@@ -47,4 +47,9 @@ public class PostService {
     public Post fromDto(PostDto objDto) {
         return new Post(objDto.getId(), objDto.getDate(), objDto.getTitle(), objDto.getBody(), objDto.getAuthor());
     }
+
+    public void delete(String id) {
+        findById(id);
+        postRepository.deleteById(id);
+    }
 }
