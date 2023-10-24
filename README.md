@@ -18,7 +18,7 @@ A aplicação é basicamente um *CRUD* com Spring Boot e Mongo DB, o usuáio pod
 > Como testar o projeto na sua máquina
 - Clone o projeto com o comando `git clone https://github.com/black-adm/spring-boot-mongodb`.
 
-- Instale as dependências do projeto com o **Maven** e gere as migrations do rodando o projeto na sua  IDE.
+- Instale as dependências do projeto com o **Maven** e gere as migrations do banco simplesmente rodando o projeto na sua  IDE.
 
 - Certifique-se de ter o *Mongo DB* instalado na sua máquina e execute o comando `mongod` para rodar o banco.
 
